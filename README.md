@@ -39,14 +39,16 @@ Hermes saves important facts to its own memory files (`USER.md` about you, `MEMO
 > Memory is loaded when a session starts, so something saved mid-chat shows up from the next session on.
 
 ### Coming from another agent?
-Hermes can import your persona, memories and skills from OpenClaw, Claude Code, Codex CLI or Cursor. `hermes setup` offers this automatically, or run it any time:
+Hermes can import your setup from Grok Bot, OpenBot, OpenClaw, Claude Code, Codex CLI or Cursor. `hermes setup` offers this on first run, or run it any time:
 
 ```bash
-hermes plugins install agent-importers
-hermes import-agent openclaw --dry-run    # preview first
-hermes import-agent openclaw              # then import
+hermes update                          # get the latest version first
+hermes migrate                         # finds the agents on this machine and offers to import
+hermes migrate grok-bot                # or name one: grok-bot, openbot, openclaw, claude-code, codex, cursor
+hermes migrate grok-bot --dry-run      # preview without changing anything
 ```
-(`hermes claw migrate` still works as the older spelling for OpenClaw.)
+
+For Grok Bot, it brings over your skills, memories and role, and your routines become cron jobs that stay paused until you turn them on. Its data lives in the cloud, so if nothing is found, export it from Grok Bot first and pass the file with `--source <export-file>`.
 
 ---
 
